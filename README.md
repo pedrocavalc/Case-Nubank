@@ -4,7 +4,6 @@
     <img src="https://img.shields.io/badge/CCDS-Project%20template-328F97?logo=cookiecutter" />
 </a>
 
-A short description of the project.
 
 ## Project Organization
 
@@ -39,23 +38,73 @@ A short description of the project.
 │
 ├── setup.cfg          <- Configuration file for flake8
 │
-└── nubankcase   <- Source code for use in this project.
-    │
-    ├── __init__.py             <- Makes nubankcase a Python module
-    │
-    ├── config.py               <- Store useful variables and configuration
-    │
-    ├── dataset.py              <- Scripts to download or generate data
-    │
-    ├── features.py             <- Code to create features for modeling
-    │
-    ├── modeling                
-    │   ├── __init__.py 
-    │   ├── predict.py          <- Code to run model inference with trained models          
-    │   └── train.py            <- Code to train models
-    │
-    └── plots.py                <- Code to create visualizations
+└── src   <- Source code for use in this project.
+
 ```
 
 --------
 
+## 🎬 Movie Recommendation System
+
+Bem-vindo ao repositório do Movie Recommendation System! Este projeto tem como objetivo recomendar filmes com base nos favoritos informados pelo usuário, utilizando técnicas de aprendizado de máquina e um sistema de recomendação baseado em similaridade de preferências.
+
+ ## Funcionalidades
+Recomendações Personalizadas: Receba sugestões de filmes com base nos seus filmes favoritos (via IMDb ID).
+
+Visualização com Pôsteres: Veja as recomendações com imagens dos filmes obtidas via OMDb.
+
+Plataformas de Streaming: Descubra em quais plataformas os filmes recomendados estão disponíveis.
+
+Integração Backend + Frontend: Backend com FastAPI e frontend com Streamlit para uma experiência interativa.
+## 🧰 Tech Stack
+Python: Linguagem principal do projeto.
+
+FastAPI: API moderna e rápida para servir recomendações.
+
+Streamlit: Interface amigável para interação com o usuário.
+
+LightGBM: Algoritmo utilizado para treinar o modelo de recomendação.
+
+Pandas: Manipulação e análise dos dados.
+
+OMDb API: Para buscar pôsteres dos filmes recomendados.
+
+## **Executando localmente**
+Clone o repositório:
+
+```bash
+git clone https://github.com/seu-usuario/movie-recommender.git
+cd movie-recommender
+```
+Instale as dependências:
+
+```bash
+pip install -r requirements.txt
+```
+Inicie o backend (FastAPI):
+
+```bash
+uvicorn app.main:app --reload
+```
+Inicie o frontend (Streamlit):
+```bash
+streamlit run front/app.py
+```
+
+## 🧠 Como funciona
+Input do Usuário: O usuário informa os imdbId dos seus filmes favoritos.
+
+Treinamento Dinâmico: Um modelo LightGBM é treinado com base nos filmes favoritos como positivos.
+
+Geração de Scores: O modelo estima a probabilidade do usuário gostar de outros filmes.
+
+Top N Recomendações: Os filmes com maior probabilidade (e que o usuário ainda não assistiu) são recomendados.
+
+Visualização com Pôster e Plataforma: A recomendação é exibida com o pôster e links das plataformas onde o filme está disponível.
+
+## 🛠️ MLOps Pipeline com MLflow
+Além disso, este projeto implementa uma esteira de MLOps para treinamento e avaliação de modelos de classificação, com suporte a múltiplos algoritmos (XGBoost, Random Forest, LightGBM), usando:
+
+MLflow para rastreamento de experimentos,
+GridSearchCV para busca de hiperparâmetros,
+Estrutura modular e reutilizável com componentes customizados de DataLoader, Pipeline, Model Manager e Model Configuration.
